@@ -1,0 +1,63 @@
+class Student:
+    def __init__(self, full_name, age, address, student_id):
+        # String (str): stores the student's full name
+        self.full_name = full_name
+
+        # Integer (int): stores the student's age as a whole number
+        self.age = age
+
+        # String (str): stores the student's address
+        self.address = address
+
+        # String (str): stores the Student ID because IDs may contain letters or leading zeros
+        self.student_id = student_id
+
+    def display(self):
+        print(f"Name: {self.full_name}")
+        print(f"Age: {self.age}")
+        print(f"Address: {self.address}")
+        print(f"Student ID: {self.student_id}")
+        print("-" * 40)
+
+
+def main():
+    # List: stores multiple Student objects
+    students = []
+
+    print("Student Information System")
+    print("=" * 40)
+
+    while True:
+        full_name = input("Enter full name: ")
+
+        # Integer (int): converts the user's age input into a whole number
+        age = int(input("Enter age: "))
+
+        address = input("Enter address: ")
+
+        # String (str): Student ID is kept as text
+        student_id = input("Enter Student ID: ")
+
+        # Create a Student object and add it to the list
+        student = Student(full_name, age, address, student_id)
+        students.append(student)
+
+        # String: used to check whether the user wants to continue
+        choice = input("Add another student? (yes/no): ").lower()
+
+        if choice != "yes":
+            break
+
+    # Sort the list of Student objects by age
+    students.sort(key=lambda student: student.age)
+
+    print("\nStudents Sorted by Age")
+    print("=" * 40)
+
+    # Display each student's information
+    for student in students:
+        student.display()
+
+
+if __name__ == "__main__":
+    main()
