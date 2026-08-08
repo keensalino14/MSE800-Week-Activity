@@ -1,16 +1,12 @@
 class Student:
     def __init__(self, full_name, age, address, student_id):
-        # String (str): stores the student's full name
         self.full_name = full_name
-
-        # Integer (int): stores the student's age as a whole number
         self.age = age
-
-        # String (str): stores the student's address
         self.address = address
-
-        # String (str): stores the Student ID because IDs may contain letters or leading zeros
         self.student_id = student_id
+
+    def get_age(self):
+        return self.age
 
     def display(self):
         print(f"Name: {self.full_name}")
@@ -49,7 +45,7 @@ def main():
             break
 
     # Sort the list of Student objects by age
-    students.sort(key=lambda student: student.age)
+    students.sort(key=Student.get_age)
 
     print("\nStudents Sorted by Age")
     print("=" * 40)
