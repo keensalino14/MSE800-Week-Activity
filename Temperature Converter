@@ -1,0 +1,54 @@
+class TemperatureConverter:
+
+    def __init__(self):
+        # String (str): stores the temperature entered by the user
+        self.temp_input = ""
+
+    def convert(self):
+        print("=== Temperature Converter ===")
+        print("Enter a temperature using:")
+        print("F followed by the value to convert Fahrenheit to Celsius.")
+        print("C followed by the value to convert Celsius to Fahrenheit.")
+        print()
+
+        self.temp_input = input("Temperature: ")
+
+        # Check if no input was entered
+        if not self.temp_input:
+            print("Error: Please enter a temperature.")
+            return
+
+        # Get the first character of the input
+        unit = self.temp_input[0]
+
+        # Get the number part of the input
+        value = float(self.temp_input[1:])
+
+        if unit == "F":
+            result = self.to_celsius(value)
+            print(f"{value}°F = {result:.2f}°C")
+
+        elif unit == "C":
+            result = self.to_fahrenheit(value)
+            print(f"{value}°C = {result:.2f}°F")
+
+        else:
+            print("Invalid unit. Please start with C or F.")
+
+    def to_celsius(self, fahrenheit):
+        # Convert Fahrenheit to Celsius
+        return (fahrenheit - 32) * 5 / 9
+
+    def to_fahrenheit(self, celsius):
+        # Convert Celsius to Fahrenheit
+        return (celsius * 9 / 5) + 32
+
+
+# Program starts here
+if __name__ == "__main__":
+
+    # Create an object from the TemperatureConverter class
+    temp_converter = TemperatureConverter()
+
+    # Run the conversion program
+    temp_converter.convert()
