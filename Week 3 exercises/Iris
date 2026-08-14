@@ -1,0 +1,29 @@
+from ucimlrepo import fetch_ucirepo
+
+
+def main():
+
+    # Get the Iris dataset from the UCI Machine Learning Repository
+    iris_data = fetch_ucirepo(id=53)
+
+    # Store the features and target values
+    features = iris_data.data.features
+    targets = iris_data.data.targets
+
+    # Display the total number of records
+    print("Total number of records:", len(features))
+
+    # Find the number of different flower types
+    flower_types = targets.iloc[:, 0].unique()
+
+    print("Total number of different flowers:", len(flower_types))
+
+    # Display the names of the flowers
+    print("Names of the flowers in the dataset:")
+
+    for flower in flower_types:
+        print("-", flower)
+
+
+if __name__ == "__main__":
+    main()
