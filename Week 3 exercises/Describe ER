@@ -1,0 +1,11 @@
+The ER diagram shows the relationships between the main entities in the student enrollment system. 
+The Student entity stores personal information such as Student ID, first name, last name, and birthdate. 
+
+Students enroll in courses through the Enrollment entity, which contains details such as student code, enrollment date, course name, and CC#. 
+Each enrollment is connected to a Lecture, which includes the CC#, subject, schedule, date, and lecture name. 
+
+Each lecture is assigned to a Lecturer, whose information includes Lecturer ID, first name, last name, email, and address. 
+The lecture is also connected to a Subject, which contains the subject code, units, and description.
+
+For additional attributes, Room Number and Department can be added to the Subject entity. 
+These details can help students easily identify where their classes are held and which department their course belongs to, making it easier for them to find the correct room and department they need to attend.
