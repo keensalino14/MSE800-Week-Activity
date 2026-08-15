@@ -1,0 +1,18 @@
+# Open and read the file
+file = open("junk.txt", "r")
+data = file.read()
+file.close()
+
+# Count the lines
+print("Total number of lines:", len(data.splitlines()))
+
+# Convert to lowercase
+data = data.lower()
+
+# Add the new line
+data = data + "\ntext file nanalyssis"
+
+# Open the file and save the changes
+file = open("junk.txt", "w")
+file.write(data)
+file.close()
