@@ -1,0 +1,1 @@
+# I'm using the Miro tool to create my use case diagram. The system shows how to register customer information and select a currency for the exchange. It then calculates the converted amount based on the selected exchange rate and currency. Finally, the system displays the new amount after applying the exchange rate based on the selected currencies.
