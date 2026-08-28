@@ -1,3 +1,14 @@
+
+# This project is a simple University Staff Management System developed using Object-Oriented Programming (OOP). 
+# The Person class is the main parent class that contains common attributes such as id and name. 
+# The Staff class inherits from Person and adds staff-specific information such as staff_id and tax_num.
+#  The General class inherits from Staff and contains the rate_of_pay attribute, which is used to calculate the total pay based on the number of hours worked.
+#  The Academic class also inherits from Staff and represents a lecturer. It contains a list of publications and uses the number_of_publications() method to calculate and display how many publications the lecturer has. 
+# The project demonstrates important OOP concepts such as classes, objects, attributes, methods, and inheritance.
+
+
+
+
 # Parent class
 class Person:
     def __init__(self, id, name):
