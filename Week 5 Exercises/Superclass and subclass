@@ -1,0 +1,82 @@
+
+# Parent Class
+class Staff:
+    def __init__(self, name, staff_id):
+        self.name = name
+        self.staff_id = staff_id
+
+    def display_info(self):
+        print(f"Name: {self.name}")
+        print(f"Staff ID: {self.staff_id}")
+
+
+# Child Class - Lecturer
+class Lecturer(Staff):
+    def __init__(self, name, staff_id, department, publications):
+        super().__init__(name, staff_id)
+        self.department = department
+        self.publications = publications
+
+    def calculate_publications(self):
+        return len(self.publications)
+
+    def display_info(self):
+        super().display_info()
+        print(f"Department: {self.department}")
+        print(f"Number of Publications: {self.calculate_publications()}")
+
+
+# Child Class - General Staff
+class GeneralStaff(Staff):
+    def __init__(self, name, staff_id, position, hours_worked, hourly_rate):
+        super().__init__(name, staff_id)
+        self.position = position
+        self.hours_worked = hours_worked
+        self.hourly_rate = hourly_rate
+
+    def calculate_pay(self):
+        return self.hours_worked * self.hourly_rate
+
+    def display_info(self):
+        super().display_info()
+        print(f"Position: {self.position}")
+        print(f"Hours Worked: {self.hours_worked}")
+        print(f"Hourly Rate: ${self.hourly_rate:.2f}")
+        print(f"Total Pay: ${self.calculate_pay():.2f}")
+
+
+# -----------------------------
+# Creating Objects
+# -----------------------------
+
+# Lecturer object
+lecturer = Lecturer(
+    "Dr. John Smith",
+    "L001",
+    "Computer Science",
+    [
+        "Artificial Intelligence in Education",
+        "Software Engineering Practices",
+        "Machine Learning Applications"
+    ]
+)
+
+# General Staff object
+general_staff = GeneralStaff(
+    "Sarah Brown",
+    "GS001",
+    "Administrative Assistant",
+    40,
+    30
+)
+
+
+# -----------------------------
+# Display Results
+# -----------------------------
+
+print("===== LECTURER INFORMATION =====")
+lecturer.display_info()
+
+print("\n===== GENERAL STAFF INFORMATION =====")
+general_staff.display_info()
