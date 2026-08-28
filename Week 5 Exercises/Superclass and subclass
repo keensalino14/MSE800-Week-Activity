@@ -1,82 +1,67 @@
-
-# Parent Class
-class Staff:
-    def __init__(self, name, staff_id):
+# Parent class
+class Person:
+    def __init__(self, id, name):
+        self.id = id
         self.name = name
+
+
+# Staff class inherits Person
+class Staff(Person):
+    def __init__(self, id, name, staff_id, tax_num):
+        super().__init__(id, name)
         self.staff_id = staff_id
-
-    def display_info(self):
-        print(f"Name: {self.name}")
-        print(f"Staff ID: {self.staff_id}")
+        self.tax_num = tax_num
 
 
-# Child Class - Lecturer
-class Lecturer(Staff):
-    def __init__(self, name, staff_id, department, publications):
-        super().__init__(name, staff_id)
-        self.department = department
+# General Staff inherits Staff
+class General(Staff):
+    def __init__(self, id, name, staff_id, tax_num, rate_of_pay):
+        super().__init__(id, name, staff_id, tax_num)
+        self.rate_of_pay = rate_of_pay
+
+    def calculate_pay(self, hours):
+        return self.rate_of_pay * hours
+
+
+# Academic/Lecturer inherits Staff
+class Academic(Staff):
+    def __init__(self, id, name, staff_id, tax_num, publications):
+        super().__init__(id, name, staff_id, tax_num)
         self.publications = publications
 
-    def calculate_publications(self):
+    def number_of_publications(self):
         return len(self.publications)
 
-    def display_info(self):
-        super().display_info()
-        print(f"Department: {self.department}")
-        print(f"Number of Publications: {self.calculate_publications()}")
 
-
-# Child Class - General Staff
-class GeneralStaff(Staff):
-    def __init__(self, name, staff_id, position, hours_worked, hourly_rate):
-        super().__init__(name, staff_id)
-        self.position = position
-        self.hours_worked = hours_worked
-        self.hourly_rate = hourly_rate
-
-    def calculate_pay(self):
-        return self.hours_worked * self.hourly_rate
-
-    def display_info(self):
-        super().display_info()
-        print(f"Position: {self.position}")
-        print(f"Hours Worked: {self.hours_worked}")
-        print(f"Hourly Rate: ${self.hourly_rate:.2f}")
-        print(f"Total Pay: ${self.calculate_pay():.2f}")
-
-
-# -----------------------------
-# Creating Objects
-# -----------------------------
-
-# Lecturer object
-lecturer = Lecturer(
-    "Dr. John Smith",
-    "L001",
-    "Computer Science",
-    [
-        "Artificial Intelligence in Education",
-        "Software Engineering Practices",
-        "Machine Learning Applications"
-    ]
+# Create lecturer
+lecturer = Academic(
+    1,
+    "John",
+    "A001",
+    "T123",
+    ["Research 1", "Research 2", "Research 3"]
 )
 
-# General Staff object
-general_staff = GeneralStaff(
-    "Sarah Brown",
-    "GS001",
-    "Administrative Assistant",
-    40,
-    30
+# Create general staff
+general = General(
+    2,
+    "Sarah",
+    "G001",
+    "T456",
+    25
 )
 
 
-# -----------------------------
-# Display Results
-# -----------------------------
+# Display lecturer information
+print("=== Lecturer ===")
+print("Name:", lecturer.name)
+print("Publications:", lecturer.number_of_publications())
 
-print("===== LECTURER INFORMATION =====")
-lecturer.display_info()
 
-print("\n===== GENERAL STAFF INFORMATION =====")
-general_staff.display_info()
+# Display general staff information
+print("\n=== General Staff ===")
+print("Name:", general.name)
+print("Pay Rate: $", general.rate_of_pay)
+
+hours = 40
+print("Total Pay: $", general.calculate_pay(hours))
