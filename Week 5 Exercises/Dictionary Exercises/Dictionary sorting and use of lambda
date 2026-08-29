@@ -1,0 +1,10 @@
+employees = [
+    {'name': 'Alice', 'age': 30, 'salary': 80000},
+    {'name': 'Bob', 'age': 25, 'salary': 50000},
+    {'name': 'Charlie', 'age': 35, 'salary': 120000},
+]
+
+# Sort by age, then by salary if ages are the same
+sorted_employees = sorted(employees, key=lambda employee: (employee['age'], employee['salary']))
+
+print(sorted_employees)

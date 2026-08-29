@@ -1,0 +1,5 @@
+data = [100, 200, 300, 400, 500]
+
+result = [value for index, value in enumerate(data) if index % 2 == 0]
+
+print(result)

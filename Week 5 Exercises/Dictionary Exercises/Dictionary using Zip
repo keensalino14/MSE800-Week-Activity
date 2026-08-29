@@ -1,0 +1,6 @@
+k= ['name', 'age', 'grade']
+v = ['Alice', 25, 'A']
+
+result = dict(zip(k, v))
+
+print(result)
