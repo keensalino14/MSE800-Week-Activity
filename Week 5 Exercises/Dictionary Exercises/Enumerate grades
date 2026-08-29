@@ -1,0 +1,9 @@
+grades = [88, 92, 78, 65, 50, 94]
+
+for index, grade in enumerate(grades):
+    if index == 4:  # 5th grade
+        grades[index] += 10
+    else:
+        grades[index] += 5
+
+print(grades)
