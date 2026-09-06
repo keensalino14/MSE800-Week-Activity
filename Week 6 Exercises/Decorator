@@ -1,0 +1,53 @@
+# Global variable to track login status
+is_logged_in = False
+
+
+# Decorator
+def login_required(func):
+    def wrapper():
+        if is_logged_in:
+            func()
+        else:
+            print("Access Denied! Please log in first.")
+    return wrapper
+
+
+@login_required
+def view_salary():
+    print("Salary: $5,000 per month")
+
+
+@login_required
+def view_personnel_details():
+    print("Personnel Details:")
+    print("Name: John Smith")
+    print("Employee ID: EMP001")
+    print("Department: IT")
+
+
+@login_required
+def download_report():
+    print("Downloading employee report...")
+    print("Report downloaded successfully!")
+
+
+# Login function
+def login(username, password):
+    global is_logged_in
+
+    if username == "admin" and password == "1234":
+        is_logged_in = True
+        print("Login Successful!")
+    else:
+        print("Invalid Username or Password.")
+
+
+# Test the program
+view_salary()
+view_personnel_details()
+download_report()
+
+login("admin", "1234")
+
+view_salary()
+view_personnel_details
