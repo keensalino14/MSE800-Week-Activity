@@ -1,0 +1,35 @@
+# Payment System
+# Demonstrating Polymorphism
+
+
+# Credit Card class
+class CreditCard:
+    def make_payment(self, amount):
+        print(f"Credit Card payment of ${amount:.2f} processed successfully.")
+
+
+# PayPal class
+class PayPal:
+    def make_payment(self, amount):
+        print(f"PayPal payment of ${amount:.2f} processed successfully.")
+
+
+# Bank Transfer class
+class BankTransfer:
+    def make_payment(self, amount):
+        print(f"Bank Transfer payment of ${amount:.2f} processed successfully.")
+
+
+# Create objects for each payment method
+credit_card = CreditCard()
+paypal = PayPal()
+bank_transfer = BankTransfer()
+
+# Store all payment methods in a list
+payment_methods = [credit_card, paypal, bank_transfer]
+
+# Process payments using polymorphism
+print("--- Payment Processing ---")
+
+for payment in payment_methods:
+    payment.make_payment(500)

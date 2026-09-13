@@ -1,0 +1,31 @@
+# Department class
+class Department:
+
+    def __init__(self, department_name, head):
+        self.department_name = department_name
+        self.head = head
+
+    def show_department(self):
+        print(f"Department: {self.department_name}")
+        print(f"Head of Department: {self.head}")
+
+
+# University class
+class University:
+
+    def __init__(self, university_name):
+        self.university_name = university_name
+
+        # Creating a Department object inside the University class
+        self.department = Department("Computer Science", "Dr. John Smith")
+
+    def show_university(self):
+        print(f"University: {self.university_name}")
+        self.department.show_department()
+
+
+# Create a University object
+university = University("ABC University")
+
+# Display university and department details
+university.show_university()
