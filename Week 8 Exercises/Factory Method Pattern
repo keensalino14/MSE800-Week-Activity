@@ -1,0 +1,90 @@
+from abc import ABC, abstractmethod
+
+
+# Product Interface
+class Notification(ABC):
+
+    @abstractmethod
+    def send(self):
+        pass
+
+
+# Concrete Product: Email
+class Email(Notification):
+
+    def send(self):
+        print("Sending notification through Email.")
+
+
+# Concrete Product: SMS
+class SMS(Notification):
+
+    def send(self):
+        print("Sending notification through SMS.")
+
+
+# Concrete Product: Push Notification
+class Push(Notification):
+
+    def send(self):
+        print("Sending notification through Push Notification.")
+
+
+# Creator Interface
+class NotificationFactory(ABC):
+
+    @abstractmethod
+    def create_notification(self):
+        pass
+
+    def send_notification(self):
+        notification = self.create_notification()
+        notification.send()
+
+
+# Concrete Factory: Email
+class EmailFactory(NotificationFactory):
+
+    def create_notification(self):
+        return Email()
+
+
+# Concrete Factory: SMS
+class SMSFactory(NotificationFactory):
+
+    def create_notification(self):
+        return SMS()
+
+
+# Concrete Factory: Push
+class PushFactory(NotificationFactory):
+
+    def create_notification(self):
+        return Push()
+
+
+# Main Program
+print("=== Notification System ===")
+print("1. Email")
+print("2. SMS")
+print("3. Push Notification")
+
+choice = input("Choose notification method: ")
+
+
+if choice == "1":
+    factory = EmailFactory()
+
+elif choice == "2":
+    factory = SMSFactory()
+
+elif choice == "3":
+    factory = PushFactory()
+
+else:
+    factory = None
+    print("Invalid choice.")
+
+
+if factory:
+    factory.send_notification()
