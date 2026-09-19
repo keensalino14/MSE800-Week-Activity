@@ -1,0 +1,64 @@
+from abc import ABC, abstractmethod
+
+
+# Product Interface
+class Food(ABC):
+
+    @abstractmethod
+    def prepare(self):
+        pass
+
+
+# Concrete Product 1
+class Pizza(Food):
+
+    def prepare(self):
+        print("Preparing Pizza...")
+
+
+# Concrete Product 2
+class Burger(Food):
+
+    def prepare(self):
+        print("Preparing Burger...")
+
+
+# Concrete Product 3
+class Pasta(Food):
+
+    def prepare(self):
+        print("Preparing Pasta...")
+
+
+# Factory Class
+class FoodFactory:
+
+    @staticmethod
+    def create_food(food_type):
+
+        if food_type.lower() == "pizza":
+            return Pizza()
+
+        elif food_type.lower() == "burger":
+            return Burger()
+
+        elif food_type.lower() == "pasta":
+            return Pasta()
+
+        else:
+            return None
+
+
+# Main Program
+print("=== Restaurant Food Ordering System ===")
+
+food_type = input("Enter food you want (Pizza/Burger/Pasta): ")
+
+# Customer requests food through the Factory
+food = FoodFactory.create_food(food_type)
+
+if food:
+    food.prepare()
+    print("Your order is being prepared.")
+else:
+    print("Sorry, that food is not available.")
