@@ -1,0 +1,65 @@
+from abc import ABC, abstractmethod
+
+
+# Task 1: Observer
+class Observer(ABC):
+
+    @abstractmethod
+    def update(self, price):
+        pass
+
+
+# Task 2: Concrete Observer
+class Investor(Observer):
+
+    def __init__(self, name):
+        self.name = name
+
+    def update(self, price):
+        print(f"{self.name} received new stock price: {price}")
+
+
+# Task 3: Subject
+class Stock:
+
+    def __init__(self):
+        self.investors = []
+        self.price = 0
+
+    # Subscribe an investor
+    def subscribe(self, investor):
+        self.investors.append(investor)
+
+    # Notify all investors
+    def notify_investors(self):
+        for investor in self.investors:
+            investor.update(self.price)
+
+    # Change stock price
+    def set_price(self, price):
+        self.price = price
+        print(f"\nStock price changed to: {price}")
+        self.notify_investors()
+
+
+# Task 4: Create investors
+investor1 = Investor("Ali")
+investor2 = Investor("Maria")
+investor3 = Investor("John")
+
+
+# Create Stock
+stock = Stock()
+
+
+# Investors subscribe to the stock
+stock.subscribe(investor1)
+stock.subscribe(investor2)
+stock.subscribe(investor3)
+
+
+# Change stock price
+stock.set_price(105)
+
+# Change stock price again
+stock.set_price(110)
