@@ -1,0 +1,25 @@
+# Target
+class Payment:
+    def pay(self, amount):
+        pass
+
+
+# Adaptee
+class OldPaymentSystem:
+    def make_payment(self, amount):
+        print(f"Payment of ${amount} made using Old Payment System.")
+
+
+# Adapter using Multiple Inheritance
+class PaymentAdapter(Payment, OldPaymentSystem):
+
+    def pay(self, amount):
+        # Adapt pay() to make_payment()
+        self.make_payment(amount)
+
+
+# Client
+adapter = PaymentAdapter()
+
+# Client uses the expected interface
+adapter.pay(500)

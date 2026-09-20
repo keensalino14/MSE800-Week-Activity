@@ -1,0 +1,30 @@
+# Target
+class Payment:
+    def pay(self, amount):
+        pass
+
+
+# Adaptee
+class OldPaymentSystem:
+    def make_payment(self, amount):
+        print(f"Payment of ${amount} made using Old Payment System.")
+
+
+# Adapter using Composition
+class PaymentAdapter(Payment):
+
+    def __init__(self, old_payment_system):
+        self.old_payment_system = old_payment_system
+
+    def pay(self, amount):
+        # Convert the new interface to the old interface
+        self.old_payment_system.make_payment(amount)
+
+
+# Client
+old_payment = OldPaymentSystem()
+
+adapter = PaymentAdapter(old_payment)
+
+# Client uses the expected pay() method
+adapter.pay(500)
