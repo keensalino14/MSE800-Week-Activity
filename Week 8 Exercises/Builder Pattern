@@ -1,0 +1,79 @@
+# Product
+class TravelPackage:
+    def __init__(self):
+        self.destination = None
+        self.hotel = None
+        self.transport = None
+        self.meal_plan = None
+        self.activities = []
+        self.insurance = None
+
+    def display_package(self):
+        print("\n===== Travel Package =====")
+        print("Destination:", self.destination)
+        print("Hotel:", self.hotel)
+        print("Transport:", self.transport)
+        print("Meal Plan:", self.meal_plan)
+
+        print("Activities:")
+        if self.activities:
+            for activity in self.activities:
+                print("-", activity)
+        else:
+            print("- None")
+
+        print("Insurance:", self.insurance)
+
+
+# Builder
+class TravelPackageBuilder:
+
+    def __init__(self):
+        self.package = TravelPackage()
+
+    def set_destination(self, destination):
+        self.package.destination = destination
+        return self
+
+    def set_hotel(self, hotel):
+        self.package.hotel = hotel
+        return self
+
+    def set_transport(self, transport):
+        self.package.transport = transport
+        return self
+
+    def set_meal_plan(self, meal_plan):
+        self.package.meal_plan = meal_plan
+        return self
+
+    def add_activity(self, activity):
+        self.package.activities.append(activity)
+        return self
+
+    def set_insurance(self, insurance):
+        self.package.insurance = insurance
+        return self
+
+    def build(self):
+        return self.package
+
+
+# Client
+builder = TravelPackageBuilder()
+
+travel_package = (
+    builder
+    .set_destination("Auckland")
+    .set_hotel("5-star")
+    .set_transport("Flight")
+    .set_meal_plan("Breakfast")
+    .add_activity("City Tour")
+    .add_activity("Museum")
+    .add_activity("Adventure Tour")
+    .set_insurance("Yes")
+    .build()
+)
+
+# Display the package
+travel_package.display_package()

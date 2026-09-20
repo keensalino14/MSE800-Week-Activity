@@ -1,0 +1,53 @@
+class UniversityConfig:
+  
+    _instance = None
+
+    def __new__(cls):
+        
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+
+        return cls._instance
+
+    def __init__(self):
+       
+        if not hasattr(self, "university_name"):
+            self.university_name = ""
+            self.academic_year = ""
+            self.semester = ""
+
+    def set_configuration(self, university_name, academic_year, semester):
+        self.university_name = university_name
+        self.academic_year = academic_year
+        self.semester = semester
+
+    def display_configuration(self):
+        print("\n=== University Configuration ===")
+        print("University Name:", self.university_name)
+        print("Academic Year:", self.academic_year)
+        print("Semester:", self.semester)
+
+
+
+config1 = UniversityConfig()
+config2 = UniversityConfig()
+config3 = UniversityConfig()
+
+
+
+config1.set_configuration(
+    "University of Auckland",
+    "2026",
+    "Semester 2"
+)
+
+
+
+config2.display_configuration()
+
+
+print("\n=== Singleton Verification ===")
+
+print("config1 is config2:", config1 is config2)
+print("config2 is config3:", config2 is config3)
+print("config1 is config3:", config1 is config3)
