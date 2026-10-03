@@ -1,0 +1,22 @@
+def calculate_discount(price):
+    if price < 0:
+        raise ValueError("Price cannot be negative")
+
+    if price == 0:
+        raise ValueError("Price cannot be zero")
+
+    discount = price * 0.10
+    return discount
+
+
+try:
+    price = float(input("Enter the price: "))
+
+    discount = calculate_discount(price)
+
+    print("Discount:", discount)
+    print("Final price:", price - discount)
+
+except ValueError as e:
+    print("Error type:", type(e).__name__)
+    print("Error message:", e)

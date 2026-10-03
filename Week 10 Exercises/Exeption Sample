@@ -1,0 +1,10 @@
+text = input("Enter a number: ")
+
+try:
+    value = int(text)
+    result = 100 / value
+    print("Result:", result)
+except ValueError:
+    print("Not a number")
+except ZeroDivisionError:
+    print("Cannot divide by zero")
